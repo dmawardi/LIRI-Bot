@@ -27,6 +27,12 @@ function queryFormatter(query) {
     return string
 }
 
+function extractArtists(artistsList) {
+    let ref = artistsList;
+    console.log('length: '+ref.length);
+
+}
+
 function printResults(response) {
     let ref = response.tracks.items;
 
@@ -35,7 +41,8 @@ function printResults(response) {
     // Iterate through results printing each result
     for (let i = 0; i < ref.length; i++) {
         console.log('###############################################################');
-        console.log('Artist Name: ' + ref[i].album.artists[i].name);
+        console.log('Artist Name: ' + ref[i].album.artists);
+        console.log('artist length: '+ref[i].album.artists.name);
         console.log('Release Date: ' + ref[i].album.release_date);
         console.log('Album Name: ' + ref[i].album.name);
         console.log('Name: ' + ref[i].name);
@@ -64,23 +71,9 @@ function searchSpotify(searchQuery) {
         })
         .then(function (response) {
             //   console.log(JSON.stringify(response.tracks.items, null, 2));
-            console.log(JSON.stringify(response.tracks.items[0], null, 2));
+            console.log(JSON.stringify(response.tracks.items[1], null, 2));
 
             printResults(response);
-            console.log('Results:');
-            console.log('###############################################################');
-            console.log('Artist Name: ' + response.tracks.items[0].album.artists[0].name);
-            console.log('Release Date: ' + response.tracks.items[0].album.release_date);
-            console.log('Album Name: ' + response.tracks.items[0].album.name);
-            console.log('Name: ' + response.tracks.items[0].name);
-            console.log('Popularity: ' + response.tracks.items[0].popularity);
-            console.log('href: ' + response.tracks.items[0].href);
-            console.log('Duration: ' + response.tracks.items[0].duration_ms);
-            console.log('###############################################################');
-
-
-
-
             //   album.artists[0].name
             // album.name, album.release_date
             // response.name, response.popularity, response.href, response.duration_ms
