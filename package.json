@@ -1,0 +1,29 @@
+{
+  "name": "liri-bot",
+  "version": "1.0.0",
+  "description": "A bot that searches for artist/movie information and bands in town",
+  "main": "LiriBot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmawardi/LIRI-Bot.git"
+  },
+  "keywords": [
+    "Bot",
+    "fake",
+    "Siri"
+  ],
+  "author": "Dannar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmawardi/LIRI-Bot/issues"
+  },
+  "homepage": "https://github.com/dmawardi/LIRI-Bot#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "inquirer": "^6.5.1",
+    "node-spotify-api": "^1.1.1"
+  }
+}
