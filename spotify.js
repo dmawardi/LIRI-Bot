@@ -27,22 +27,34 @@ function queryFormatter(query) {
     return string
 }
 
-function extractArtists(artistsList) {
-    let ref = artistsList;
-    console.log('length: '+ref.length);
+function extractArtists(ref) {
+    ref = ref.artists
+    if (ref.length > 0) {
+        console.log('Artist: '+ref[0].name);
+
+        // Else, concatenate
+    } else {
+        let string = '';
+        for (let i = 0; i < ref.length; i++) {
+            console.log('Artists: '+ref[i].name);
+
+        }
+
+    }
 
 }
+
 
 function printResults(response) {
     let ref = response.tracks.items;
 
     console.log('There are ' + ref.length + ' Results:');
+    console.log('###############################################################');
 
     // Iterate through results printing each result
     for (let i = 0; i < ref.length; i++) {
-        console.log('###############################################################');
-        console.log(ref[i].album.artists);
-        console.log('artist length: '+ref[i].album.artists.name);
+        // extract the artist based on the number of artists on the track
+        extractArtists(ref[i].album)
         console.log('Release Date: ' + ref[i].album.release_date);
         console.log('Album Name: ' + ref[i].album.name);
         console.log('Name: ' + ref[i].name);
@@ -67,16 +79,12 @@ function searchSpotify(searchQuery) {
             type: 'track',
             query: searchQuery,
             market: 'AU',
-            limit: 5
+            limit: 10
         })
         .then(function (response) {
-            //   console.log(JSON.stringify(response.tracks.items, null, 2));
-            console.log(JSON.stringify(response.tracks.items[1], null, 2));
+            // console.log(JSON.stringify(response.tracks.items[1], null, 2));
 
             printResults(response);
-            //   album.artists[0].name
-            // album.name, album.release_date
-            // response.name, response.popularity, response.href, response.duration_ms
         })
         .catch(function (err) {
             console.log(err);
@@ -84,4 +92,4 @@ function searchSpotify(searchQuery) {
 }
 
 // Arugments
-searchSpotify('in da club');
+searchSpotify('be my lover');
