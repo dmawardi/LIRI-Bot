@@ -41,7 +41,7 @@ function printResults(response) {
     // Iterate through results printing each result
     for (let i = 0; i < ref.length; i++) {
         console.log('###############################################################');
-        console.log('Artist Name: ' + ref[i].album.artists);
+        console.log(ref[i].album.artists);
         console.log('artist length: '+ref[i].album.artists.name);
         console.log('Release Date: ' + ref[i].album.release_date);
         console.log('Album Name: ' + ref[i].album.name);

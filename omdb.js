@@ -54,28 +54,25 @@ function queryBuilder(searchTerm, plotType, searchType, releaseYear) {
 }
 // Prints from results
 function printTitleSearchResults(resp) {
+  console.log('###############################################################');
   // Title of the movie.
   console.log('Title: ' + resp.data.Title);
   // * Year the movie came out.
   console.log('Year: ' + resp.data.Year);
-
   // * IMDB Rating of the movie.
   console.log('IMDB Rating: ' + resp.data.Ratings[0].Value);
-
   // * Rotten Tomatoes Rating of the movie.
   console.log('Rotten Tomato Rating: ' + resp.data.Ratings[1].Value);
-
   // * Country where the movie was produced.
   console.log('Country: ' + resp.data.Country);
-
   // * Language of the movie.
   console.log('Language: ' + resp.data.Language);
-
   // * Plot of the movie.
   console.log('Plot: ' + resp.data.Plot);
-
   // * Actors in the movie.
   console.log('Actors: ' + resp.data.Actors);
+  console.log('###############################################################');
+
 }
 
 function searchOMDB(searchQuery) {
