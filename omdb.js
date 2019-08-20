@@ -1,8 +1,8 @@
 var axios = require('axios');
+var keys = require("./keys.js");
 
 // Preceded by s/search or t/title
 var searchTerm = 'Avengers';
-var api_key = '44ec4369';
 //Preceded by plot=
 var plotTypeChoices = ['short', 'full'];
 var plotType = '';
@@ -31,8 +31,9 @@ function queryFormatter(query) {
   return string
 }
 
+// query builder for OMDB API
 function queryBuilder(searchTerm, plotType, searchType, releaseYear) {
-  var baseURL = 'http://www.omdbapi.com/?apikey=' + api_key + '&';
+  var baseURL = 'http://www.omdbapi.com/?apikey=' + keys.omdb + '&';
 
   //   If plot type detected, add to query string
   if (plotType !== '') {
@@ -47,7 +48,7 @@ function queryBuilder(searchTerm, plotType, searchType, releaseYear) {
     baseURL = baseURL + 'y=' + plotType + '&';
   }
   //   Add search term to Query URL
-  baseURL = baseURL + 't=' + searchTerm;
+  baseURL = baseURL + 't=' + queryFormatter(searchTerm);
 
   return baseURL
 
@@ -75,6 +76,7 @@ function printTitleSearchResults(resp) {
 
 }
 
+// Search OMDB API using the search query
 function searchOMDB(searchQuery) {
   axios.get(searchQuery).then(function (resp) {
     console.log(resp.data);
@@ -88,3 +90,4 @@ function searchOMDB(searchQuery) {
 
 
 searchOMDB(queryBuilder(searchTerm, plotType, searchType, releaseYear));
+// console.log(keys.omdb);

@@ -1,10 +1,8 @@
 var Spotify = require('node-spotify-api');
+var keys = require("./keys.js");
 
 // Initialize spotify object with credentials
-var spotify = new Spotify({
-    id: 'bd9f893e641441b8a1a0a839b14cf479',
-    secret: '066407ba4a1843a99cb295db2d7b234f'
-});
+var spotify = new Spotify(keys.spotify);
 //  Query types can be fused with a comma in between
 queryTypes = ['album', 'artist', 'playlist', 'track'];
 
