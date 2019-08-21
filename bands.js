@@ -1,6 +1,4 @@
-var artistName = 'sum41';
 var date = ["upcoming", "past", "all"];
-var baseURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
 
 var keys = require("./keys.js");
 var axios = require('axios');
@@ -30,22 +28,26 @@ function queryFormatter(query) {
 // 'date='+date[0];
 // 'https://rest.bandsintown.com/artists/'+{artistname: artistName}+'/events?';
 
-axios.get(baseURL).then(function(resp){
-    // console.log(resp);
-    // console.log('--------------------\n');
-    // console.log(resp.data[0]);
-    for (let i = 0; i < resp.data.length; i++){
-        console.log('------------------------------');
-        console.log('Venue: '+resp.data[i].venue.name);
-        console.log('Location: '+resp.data[i].venue.city + ', ' + resp.data[i].venue.region);
-        console.log('Date: '+resp.data[i].datetime);
-        console.log('------------------------------\n');
-    }
-   
-   
+function bandsInTownSearchFor(artistName) {
+    // Declare baseURL
+    var baseURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
 
 
+    axios.get(baseURL).then(function (resp) {
+        
+        // For the amount of results returned, print
+        for (let i = 0; i < resp.data.length; i++) {
+            console.log('------------------------------');
+            // Venue Name
+            console.log('Venue: ' + resp.data[i].venue.name);
+            // Venue location
+            console.log('Location: ' + resp.data[i].venue.city + ', ' + resp.data[i].venue.region);
+            // Date of event
+            console.log('Event Date: ' + resp.data[i].datetime);
+            console.log('------------------------------\n');
+        }
 
-}).catch(function(err){
-    console.log(err);
-});
+    }).catch(function (err) {
+        console.log(err);
+    });
+}
