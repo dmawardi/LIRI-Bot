@@ -68,7 +68,6 @@ function printResults(response) {
 
 // Searches spotify using node-spotify-api package
 function searchSpotify(searchQuery, searchType='track') {
-    console.log(searchQuery);
     // convert searchQuery into correct format
     searchQuery = queryFormatter(searchQuery);
 
@@ -78,7 +77,7 @@ function searchSpotify(searchQuery, searchType='track') {
             type: searchType,
             query: searchQuery,
             market: 'AU',
-            limit: 10
+            limit: 5
         })
         .then(function (response) {
             // console.log(JSON.stringify(response.tracks.items[1], null, 2));
@@ -90,7 +89,4 @@ function searchSpotify(searchQuery, searchType='track') {
         });
 }
 
-module.exports = {
-    search: searchSpotify(),
-    queryFormat: queryFormatter()
-}
+module.exports.search = searchSpotify;

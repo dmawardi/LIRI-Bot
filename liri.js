@@ -6,16 +6,22 @@ var keys = require("./keys.js");
 
 var arguments = process.argv.slice(2);
 
+// Type of initiated command is determined by initial parameter argument
 var command = arguments[0];
 
-console.log(command);
+// Fuse the rest of the arguments that come after the command as one string, with a space as delimiter
+var parameters = arguments.slice(1).join(' ');
 
+// Depending on value of command perform associated function
 switch (command) {
+    // Search for concerts by band name
     case 'concert-this':
-        audio.search('thriller');
+        console.log('concert this');
         break;
+        // Search Spotify for song
     case 'spotify-this-song':
         // Search Spotify API
+        audio.search(parameters);
         break;
     case 'movie-this':
         // OMDB API Call
