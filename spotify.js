@@ -25,6 +25,7 @@ function queryFormatter(query) {
     return string
 }
 
+// Either prints single artist or multiple artists
 function extractArtists(ref) {
     ref = ref.artists
     if (ref.length > 0) {
@@ -42,7 +43,7 @@ function extractArtists(ref) {
 
 }
 
-
+// Print results from response
 function printResults(response) {
     let ref = response.tracks.items;
 
@@ -66,7 +67,7 @@ function printResults(response) {
 }
 
 // Searches spotify using node-spotify-api package
-function searchSpotify(searchQuery) {
+function searchSpotify(searchQuery, searchType='track') {
 
     // convert searchQuery into correct format
     searchQuery = queryFormatter(searchQuery);
@@ -74,7 +75,7 @@ function searchSpotify(searchQuery) {
     // Send search call to Spotify API
     spotify
         .search({
-            type: 'track',
+            type: searchType,
             query: searchQuery,
             market: 'AU',
             limit: 10
@@ -90,4 +91,4 @@ function searchSpotify(searchQuery) {
 }
 
 // Arugments
-searchSpotify('be my lover');
+searchSpotify('thriller');
