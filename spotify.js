@@ -68,7 +68,7 @@ function printResults(response) {
 
 // Searches spotify using node-spotify-api package
 function searchSpotify(searchQuery, searchType='track') {
-
+    console.log(searchQuery);
     // convert searchQuery into correct format
     searchQuery = queryFormatter(searchQuery);
 
@@ -90,5 +90,7 @@ function searchSpotify(searchQuery, searchType='track') {
         });
 }
 
-// Arugments
-searchSpotify('thriller');
+module.exports = {
+    search: searchSpotify(),
+    queryFormat: queryFormatter()
+}
