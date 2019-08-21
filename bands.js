@@ -1,6 +1,7 @@
-var app_id = '';
 var artistName = 'sum41';
 var date = ["upcoming", "past", "all"];
+var baseURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
+
 var keys = require("./keys.js");
 var axios = require('axios');
 
@@ -26,15 +27,23 @@ function queryFormatter(query) {
 // Expected URL
 // 'https://rest.bandsintown.com/artists/{artistname}/events'
 
-var baseURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
 // 'date='+date[0];
 // 'https://rest.bandsintown.com/artists/'+{artistname: artistName}+'/events?';
 
 axios.get(baseURL).then(function(resp){
-    console.log(JSON.stringify(resp));
-    console.log(resp[0].venue);
-    console.log(resp[0].venue);
-    console.log(resp[0].datetime);
+    // console.log(resp);
+    // console.log('--------------------\n');
+    // console.log(resp.data[0]);
+    for (let i = 0; i < resp.data.length; i++){
+        console.log('------------------------------');
+        console.log('Venue: '+resp.data[i].venue.name);
+        console.log('Location: '+resp.data[i].venue.city + ', ' + resp.data[i].venue.region);
+        console.log('Date: '+resp.data[i].datetime);
+        console.log('------------------------------\n');
+    }
+   
+   
+
 
 
 }).catch(function(err){
