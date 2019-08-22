@@ -86,7 +86,7 @@ function searchOMDB(searchQuery) {
   })
 }
 
-
-searchOMDB(queryBuilder());
+module.exports.searchMovie = searchOMDB;
+module.exports.queryFormat = queryBuilder;
 
 // searchOMDB(queryBuilder('avengers'));

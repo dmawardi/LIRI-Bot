@@ -51,3 +51,5 @@ function bandsInTownSearchFor(artistName) {
         console.log(err);
     });
 }
+
+module.exports.searchBandEvents = bandsInTownSearchFor;

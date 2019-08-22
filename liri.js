@@ -1,4 +1,6 @@
 var audio = require('./spotify.js');
+var movie = require('./omdb.js');
+var bands = require('./bands.js');
 
 require("dotenv").config();
 
@@ -17,14 +19,16 @@ switch (command) {
     // Search for concerts by band name
     case 'concert-this':
         console.log('concert this');
+        // Search Bands in town for band
+        bands.searchBandEvents(parameters)
         break;
-        // Search Spotify for song
     case 'spotify-this-song':
         // Search Spotify API
         audio.search(parameters);
         break;
     case 'movie-this':
         // OMDB API Call
+        movie.searchMovie(movie.queryFormat(parameters));
         break;
     case 'do-what-it-says':
         // reads command from random.txt

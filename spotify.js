@@ -89,4 +89,4 @@ function searchSpotify(searchQuery, searchType='track') {
         });
 }
 
-module.exports.search = searchSpotify;
+module.exports.searchMusic = searchSpotify;
