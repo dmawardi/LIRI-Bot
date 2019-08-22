@@ -1,16 +1,8 @@
 var axios = require('axios');
 var keys = require("./keys.js");
 
-// Preceded by s/search or t/title
-var searchTerm = '';
-//Preceded by plot=
-var plotTypeChoices = ['short', 'full'];
-var plotType = '';
-//Preceded by type=
-var searchTypeChoices = ['movie', 'series', 'episode'];
-var searchType = '';
-// Preceded by y=
-var releaseYear = '';
+// var plotTypeChoices = ['short', 'full'];
+// var searchTypeChoices = ['movie', 'series', 'episode'];
 
 // Replaces strings in search term with '+'
 function queryFormatter(query) {
@@ -86,7 +78,6 @@ function searchOMDB(searchQuery) {
   })
 }
 
+// Module Exports
 module.exports.searchMovie = searchOMDB;
 module.exports.queryFormat = queryBuilder;
-
-// searchOMDB(queryBuilder('avengers'));

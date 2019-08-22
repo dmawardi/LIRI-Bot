@@ -1,9 +1,9 @@
-var date = ["upcoming", "past", "all"];
+// var date = ["upcoming", "past", "all"];
 
 var keys = require("./keys.js");
 var axios = require('axios');
 
-
+// Query formatter
 function queryFormatter(query) {
     // Declare empty string
     var string = '';
@@ -22,12 +22,7 @@ function queryFormatter(query) {
     return string
 }
 
-// Expected URL
-// 'https://rest.bandsintown.com/artists/{artistname}/events'
-
-// 'date='+date[0];
-// 'https://rest.bandsintown.com/artists/'+{artistname: artistName}+'/events?';
-
+// Search Bands in town API using artist name to find events
 function bandsInTownSearchFor(artistName) {
     // Declare baseURL
     var baseURL = "https://rest.bandsintown.com/artists/" + queryFormatter(artistName) + "/events?app_id=codingbootcamp";
@@ -52,4 +47,5 @@ function bandsInTownSearchFor(artistName) {
     });
 }
 
+// Module Exports
 module.exports.searchBandEvents = bandsInTownSearchFor;

@@ -1,20 +1,18 @@
+// Imports
 var audio = require('./spotify.js');
 var movie = require('./omdb.js');
 var bands = require('./bands.js');
 var fs = require('fs');
-
 require("dotenv").config();
-
 var keys = require("./keys.js");
 
+// Command Line variables
 var arguments = process.argv.slice(2);
 
 // Type of initiated command is determined by initial parameter argument
 var commandType = arguments[0];
-
 // Fuse the rest of the arguments that come after the command as one string, with a space as delimiter
 var parameters = arguments.slice(1).join(' ');
-console.log(parameters);
 
 // Read file and take command using file location as file path
 function readFileAndTakeCommand(fileLocation) {
