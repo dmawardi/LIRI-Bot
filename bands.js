@@ -30,7 +30,7 @@ function queryFormatter(query) {
 
 function bandsInTownSearchFor(artistName) {
     // Declare baseURL
-    var baseURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
+    var baseURL = "https://rest.bandsintown.com/artists/" + queryFormatter(artistName) + "/events?app_id=codingbootcamp";
 
 
     axios.get(baseURL).then(function (resp) {
