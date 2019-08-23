@@ -1,6 +1,7 @@
 var axios = require('axios');
 var keys = require("./keys.js");
 
+// Selections
 // var plotTypeChoices = ['short', 'full'];
 // var searchTypeChoices = ['movie', 'series', 'episode'];
 
