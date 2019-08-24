@@ -4,7 +4,6 @@ var movie = require('./omdb.js');
 var bands = require('./bands.js');
 var fs = require('fs');
 require("dotenv").config();
-var keys = require("./keys.js");
 
 // Command Line variables
 var arguments = process.argv.slice(2);
@@ -36,6 +35,7 @@ function takeCommand(command, parameters) {
     switch (command) {
         // Search for concerts by band name
         case 'concert-this':
+            
             // Search Bands in town for band
             bands.searchBandEvents(parameters);
             break;
@@ -55,4 +55,4 @@ function takeCommand(command, parameters) {
 }
 
 // Arguments begin
-takeCommand(commandType);
+takeCommand(commandType, parameters);

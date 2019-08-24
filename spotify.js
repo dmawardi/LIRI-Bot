@@ -1,5 +1,6 @@
 var Spotify = require('node-spotify-api');
 var keys = require("./keys.js");
+var moment = require('moment');
 
 // Initialize spotify object with credentials
 var spotify = new Spotify(keys.spotify);
@@ -43,6 +44,20 @@ function extractArtists(ref) {
 
 }
 
+function formatSongDuration(duration) {
+    // Extract minutes
+    let minutes = moment.duration(duration).minutes();
+    // Extract seconds
+    let seconds = moment.duration(duration).seconds();
+    // Find seconds left in the minute
+    let secondsLeftInMinute = seconds%60;
+    // If secondsLeft is less than 10, add a 0 for formatting
+    if (secondsLeftInMinute < 10) {
+        secondsLeftInMinute = '0' + secondsLeftInMinute
+    }
+    return minutes +':'+secondsLeftInMinute
+}
+
 // Print results from response
 function printResults(response) {
     let ref = response.tracks.items;
@@ -59,7 +74,7 @@ function printResults(response) {
         console.log('Name: ' + ref[i].name);
         console.log('Popularity: ' + ref[i].popularity);
         console.log('href: ' + ref[i].href);
-        console.log('Duration: ' + ref[i].duration_ms);
+        console.log('Duration: ' + formatSongDuration(ref[i].duration_ms));
         console.log('###############################################################');
     }
 
